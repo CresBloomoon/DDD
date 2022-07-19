@@ -9,14 +9,25 @@ namespace DDD.Domain.Entities
                              DateTime dataDate,
                              int condition,
                              float temperature)
+            :this(areaId, String.Empty, dataDate, condition, temperature)
         {
-            AreaId = areaId;
+        }
+
+        public WeatherEntity(int areaId,
+                     string areaName,
+                     DateTime dataDate,
+                     int condition,
+                     float temperature)
+        {
+            AreaId = new AreaId(areaId);
+            AreaName = areaName;
             DataDate = dataDate;
             Condition = new Condition(condition);
             Temperature = new Temperature(temperature);
         }
 
-        public int AreaId { get; }
+        public AreaId AreaId { get; }
+        public string AreaName { get; }
         public DateTime DataDate { get; }
         public Condition Condition { get; }
         public Temperature Temperature { get; }
